@@ -1,0 +1,55 @@
+.may-movie-page{
+  display: flex;
+
+  padding: 50px;
+
+  &-poster{
+    width: 30%;
+    img{
+      width: 100%;
+    }
+  }
+
+
+  &-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    width: 70%;
+
+    padding: 0 30px 0 30px;
+
+    &-border{
+      border: 1px solid gray;
+      background-color: #e9f2f2;
+      //color: #e8ebe9;
+      border-radius: 20px;
+      height: 60%;
+
+
+      padding: 20px;
+    }
+
+    &-title{
+      text-align: center;
+
+      font-size: 30px;
+
+    }
+
+    &-overview{
+    font-size: 20px;
+    }
+
+    &-similar-movies{
+
+      display: flex;
+      overflow-x: auto;
+
+
+
+    }
+  }
+}
+
