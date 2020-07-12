@@ -1,14 +1,17 @@
 import React, {Component} from 'react';
-import './MovieCard.scss'
 import {Link} from "react-router-dom";
+import './MovieCard.scss'
+import {DarkThemeContext} from "../../context/DarkThemeContext";
+
 
 class MovieCard extends Component {
+    static contextType = DarkThemeContext;
 
     render() {
         const {movie:{title, id, popularity, poster_path, backdrop_path, overview, release_date}}=this.props;
-
+        const {isDarkTheme} = this.context;
         return (
-                <div className="card">
+                <div className={`card ${isDarkTheme && 'sss'}`}>
                     {
                         poster_path && <img src={`https://image.tmdb.org/t/p/w500/${poster_path}`} className="card-img-top" alt="img"/>
 

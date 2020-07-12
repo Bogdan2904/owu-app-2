@@ -1,55 +1,76 @@
-.may-movie-page{
-  display: flex;
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300&family=Josefin+Sans:ital,wght@1,600&family=Josefin+Slab:ital@1&family=Lobster&display=swap');
 
+* {
+  box-sizing: border-box;
+}
+
+.may-movie-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
   padding: 50px;
 
-  &-poster{
-    width: 30%;
-    img{
-      width: 100%;
-    }
+  .dark {
+    background-color: #282c32;
   }
 
-
-  &-info{
+  &-content {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    width: 100%;
 
-    width: 70%;
+    &-poster {
+      width: 30%;
 
-    padding: 0 30px 0 30px;
-
-    &-border{
-      border: 1px solid gray;
-      background-color: #e9f2f2;
-      //color: #e8ebe9;
-      border-radius: 20px;
-      height: 60%;
-
-
-      padding: 20px;
+      img {
+        width: 100%;
+      }
     }
 
-    &-title{
-      text-align: center;
-
-      font-size: 30px;
-
-    }
-
-    &-overview{
-    font-size: 20px;
-    }
-
-    &-similar-movies{
-
+    &-info {
       display: flex;
-      overflow-x: auto;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 70%;
+      padding: 0 30px 0 30px;
 
+      &-border {
+        background-color: #cdd0d1;
+        border-radius: 20px;
+        height: 60%;
+        padding: 20px;
+      }
 
+      &-title {
+        text-align: center;
+        font-size: 30px;
+        font-family: 'Lobster', cursive;
+      }
 
+      &-genres {
+        font-family: 'Josefin Slab', serif;
+        span {
+          margin-right: 5px;
+        }
+      }
+
+      &-popularity {
+        font-family: 'Josefin Slab', serif;
+      }
+
+      &-release-date {
+        font-family: 'Josefin Slab', serif;
+      }
+
+      &-overview {
+        font-size: 90vm;
+        font-family: 'Josefin Sans', sans-serif;
+      }
+
+      &-similar-movies {
+        display: flex;
+        overflow-x: auto;
+      }
     }
   }
 }
-

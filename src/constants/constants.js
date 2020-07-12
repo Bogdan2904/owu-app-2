@@ -3,16 +3,16 @@ export const API_Key  = '8af4a5dfed06f128218e744e203cfed1';
 
 
 export const categoriesOfFilm = [{
-    name: 'Популярні',
+    name: 'Popular',
     url: 'popular'
 }, {
-    name: 'Дивляться зараз',
+    name: 'Now Playing',
     url: 'now_playing'
 }, {
-    name: 'Очікувані',
+    name: 'Upcoming',
     url: 'upcoming'
 }, {
-    name: "Кращі",
+    name: "Top Rated",
     url: 'top_rated'
 }
 ];

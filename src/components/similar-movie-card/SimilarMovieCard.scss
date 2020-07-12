@@ -1,31 +1,31 @@
-.similar-card{
-
+.similar-card {
   position: relative;
   margin: 5px;
   width: 100%;
   padding: 0;
 
+  .link {
+    text-decoration: none;
+  }
 
-
-  &-image{
-
-    img{
+  &-image {
+    img {
       width: 300px;
       border-radius: 20px;
-
     }
   }
 
-  &-info{
-    position: absolute;
+  &-info {
+    color: #282c32;
+    margin: 0 20px;
   }
 
-
+  .dark-card-info{
+    color: white;
+  }
 }
 
-
-
-
-.similar-card:hover{
+.similar-card:hover {
   transform: scale(1.02);
+  font-weight: bold;
 }

@@ -34,7 +34,7 @@ class App extends Component {
                                        return (<HomePage2 routerProps={routerProps}/>);
                                    }} exact/>
 
-                            <Route path="/movies-search=:search">
+                            <Route path="/movies-search=:search/:page">
                                 <SearchPage/>
                             </Route>
 

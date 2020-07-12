@@ -8,15 +8,14 @@ import {
 import {connect} from "react-redux";
 import {Link, NavLink} from 'react-router-dom'
 import {MDBHamburgerToggler} from 'mdbreact';
-import {categoriesOfFilm} from './../../constants/constants'
+import {categoriesOfFilm} from '../../constants/constants'
 import {getCategoriesMovies} from "../../redux/actions/movies-action";
 import {getGenres} from "../../redux/actions/genres-action";
 import BootstrapSwitchButton from 'bootstrap-switch-button-react'
 import {DarkThemeContext} from "../../context/DarkThemeContext";
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCoffee, faVideo } from '@fortawesome/free-solid-svg-icons'
-
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import { faVideo} from '@fortawesome/free-solid-svg-icons'
 
 
 import './Header.scss'
@@ -32,7 +31,7 @@ class Header extends Component {
 
     toggleSingleCollapse = () => {
         this.setState({
-            collapse1 : !this.state.collapse1
+            collapse1: !this.state.collapse1
         });
     };
 
@@ -43,12 +42,19 @@ class Header extends Component {
         })
     };
 
-    cleanSearchValue = () => {
+    cleanSearchValue = (event) => {
         this.setState({
             searchValue: ''
         })
     };
 
+    clickEnterOnSearchInput = (event) => {
+        if (event.charCode === 13) {
+            event.preventDefault();
+        } else {
+            return false
+        }
+    };
 
     render() {
 
@@ -65,10 +71,10 @@ class Header extends Component {
 
                                 <div className={`may-header-close ${isDarkTheme && "may-header-close-dark-theme"}`}>
 
-                                    <div className={`may-header-close-logo  ${!isDarkTheme && "may-header-close-logo-white"}`}>
-                                        <FontAwesomeIcon icon={faVideo} />
+                                    <div
+                                        className={`may-header-close-logo  ${!isDarkTheme && "may-header-close-logo-white"}`}>
+                                        <FontAwesomeIcon icon={faVideo}/>
                                     </div>
-
 
 
                                     <div className='may-header-close-center-menu '>
@@ -77,26 +83,28 @@ class Header extends Component {
                                                                  onClick={() => this.toggleSingleCollapse('collapse1')}/>
                                         </div>
 
-                                        <Form  className="may-header-close-center-menu-form">
-                                            <FormControl value={searchValue} onChange={this.searchOnChange} type="text"
-                                                         placeholder={"Search"} className="mr-sm-2 input"/>
-                                            <Link to={`/movies-search=${searchValue}`}>
-                                                <Button variant="outline-success" onClick={this.cleanSearchValue}>Search</Button>
+                                        <Form className="may-header-close-center-menu-form">
+                                            <input value={searchValue}
+                                                   onKeyPress={this.clickEnterOnSearchInput}
+                                                   onChange={this.searchOnChange} type="text"
+                                                   placeholder={"Search"}  className="mr-sm-2 input"/>
+                                            <Link to={`/movies-search=${searchValue}/1`}>
+                                                <Button variant="outline-success"
+                                                        onClick={this.cleanSearchValue}>Search</Button>
                                             </Link>
                                         </Form>
 
                                         <div className="may-header-close-center-menu-toggle-theme">
-                                        <BootstrapSwitchButton
-                                            checked={isDarkTheme}
-                                            onlabel='ON'
-                                            offlabel='OF'
-                                            onstyle="secondary"
-                                            onChange={toggleTheme}
-                                        />
+                                            <BootstrapSwitchButton
+                                                checked={isDarkTheme}
+                                                onlabel='ON'
+                                                offlabel='OF'
+                                                onstyle="secondary"
+                                                onChange={toggleTheme}
+                                            />
                                         </div>
 
                                     </div>
-
 
 
                                     <div
@@ -110,19 +118,19 @@ class Header extends Component {
                                 {
                                     collapse1 &&
                                     <div className={`may-header-open ${isDarkTheme && "may-header-open-dark-theme"}`}>
-                                            {
-                                                categoriesOfFilm.map(categories => {
-                                                    return (
-                                                        <span key={categories.name}>
+                                        {
+                                            categoriesOfFilm.map(categories => {
+                                                return (
+                                                    <span key={categories.name}>
                                                             <NavLink
                                                                 to={`/movies-category=${categories.url}/1`}
                                                                 className="link">{categories.name}
                                                             </NavLink>
                                                         </span>
-                                                    )
+                                                )
 
-                                                })
-                                            }
+                                            })
+                                        }
                                     </div>
                                 }
 

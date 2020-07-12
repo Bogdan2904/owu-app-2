@@ -9,6 +9,11 @@ import {NavLink} from "react-router-dom";
 
 import './HomePage.scss'
 
+// Array.prototype.showBuMovieCard () = {
+//     this.map(elem => {
+//         return <MovieCard key={elem.id} movie={elem}/>
+//     })
+// };
 class HomePage extends Component {
 
 

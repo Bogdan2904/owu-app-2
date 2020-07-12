@@ -1,0 +1,25 @@
+@media screen and (max-width: 425px) {
+  .similar-card{
+    &-image{
+      img{
+        width: 100px;
+      }
+    }
+    &-info{
+      font-size: 6px;
+    }
+  }
+}
+
+@media screen and (max-width: 570px){
+  .similar-card{
+    &-image{
+      img{
+        width: 200px;
+      }
+    }
+    &-info{
+      //font-size: 15px;
+    }
+  }
+}

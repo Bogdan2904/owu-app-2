@@ -7,6 +7,7 @@ import {withRouter} from 'react-router'
 
 import {DarkThemeContext} from "../../context/DarkThemeContext";
 import queryString from "query-string";
+import {NavLink} from "react-router-dom";
 
 
 class SearchPage extends Component {
@@ -16,12 +17,7 @@ class SearchPage extends Component {
         super(props);
         debugger
 
-        const {location: {search}} = props;
-        const page = queryString.parse(search);
 
-        this.state = {
-            page: parseInt(page.page) || 1
-        };
         debugger
 
     }
@@ -35,7 +31,7 @@ class SearchPage extends Component {
             this.loadingSearchMovies();
         }
 
-        if(prevState.page !== this.state.page){
+        if (prevProps.match.params.page !== this.props.match.params.page) {
             this.loadingSearchMovies();
         }
     }
@@ -45,36 +41,14 @@ class SearchPage extends Component {
     }
 
     loadingSearchMovies=()=>{
-        const { page } = this.state;
-        const { getSearchMovies, match:{params:{search}}  } = this.props;
+        const { getSearchMovies, match:{params:{search, page}}  } = this.props;
         getSearchMovies && getSearchMovies(search, page);
     };
 
-    goToTheNextPage = () => {
-        this.setState({
-            page: this.state.page + 1
-        })
-    };
-
-    goToTheFirstPage = () => {
-        this.setState({
-            page: 1
-        })
-    };
-
-    goBackPage = () => {
-        if(this.state.page > 1)
-            this.setState({
-                page: this.state.page - 1
-            })
-    };
-
-
     render() {
         const { allMovies } = this.props;
-        const { page } = this.state;
         const {isDarkTheme} = this.context;
-
+        const {match:{params:{search, page}}} = this.props;
         return (
             <div className={`may-search-page ${isDarkTheme && "dark"}`}>
                 {
@@ -83,18 +57,19 @@ class SearchPage extends Component {
                     })
                 }
 
-                    <div>
-                        {
-                            page > 1 &&
-                                <button type='button' className='btn' onClick={this.goBackPage}>To passed
-                                    page
-                                </button>
-                        }
-                            <button type='button' className='btn' onClick={this.goToTheFirstPage}>To first page
-                            </button>
-                            <button type='button' className='btn' onClick={this.goToTheNextPage}>Next page
-                            </button>
-                    </div>
+                {!!allMovies && <div className='may-home-page-navigation'>
+                    {
+                        page > 1 &&
+                        <NavLink className={`link ${isDarkTheme && "link-dark"}`} to={`/movies-search=${search}/${parseInt(page) - 1}`}>To passed
+                            page
+                        </NavLink>
+                    }
+                    <NavLink className={`link ${isDarkTheme && "link-dark"}`} to={`/movies-search=${search}/1`}>To first page
+                    </NavLink>
+
+                    <NavLink className={`link ${isDarkTheme && "link-dark"}`} to={`/movies-search=${search}/${parseInt(page) + 1}`}>Next page
+                    </NavLink>
+                </div>}
             </div>
 
         );

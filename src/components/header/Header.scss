@@ -2,6 +2,7 @@
 
 .may-header {
 
+
   &-close {
     height: 70px;
     background: #032541;
@@ -14,14 +15,18 @@
       background-color: #e8ebe9;
     }
 
+
+
     &-logo {
       width: 20%;
       display: flex;
       justify-content: center;
       align-items: center;
-
       font-size: 45px;
-      &-white{
+
+
+
+      &-white {
         color: white;
       }
     }
@@ -45,10 +50,11 @@
 
         .input {
           width: 80%;
+          outline: none;
         }
       }
 
-      &-toggle-theme{
+      &-toggle-theme {
         display: flex;
         justify-content: flex-end;
         width: 20%;
@@ -68,7 +74,7 @@
 
       color: white;
 
-      &-dark-theme{
+      &-dark-theme {
         color: black;
 
       }
@@ -77,34 +83,33 @@
   }
 
   &-open {
-      display: flex;
-      justify-content: space-between;
-      padding: 20px 140px;
-      width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 140px;
+    width: 100%;
 
 
-      .link{
-        color: #15a2ab;
-        text-decoration: none;
-        font-family: 'Notable', sans-serif;
-        font-size: 20px;
-      }
+    .link {
+      color: #15a2ab;
+      text-decoration: none;
+      font-family: 'Notable', sans-serif;
+      font-size: 20px;
+    }
 
-      .link:hover{
-        color: #09595e;
-      }
-
-
-
-      span:hover{
-        transform: scale(1.03);
-      }
+    .link:hover {
+      color: #09595e;
+    }
 
 
-    &-dark-theme{
+    span:hover {
+      transform: scale(1.03);
+    }
+
+
+    &-dark-theme {
       background-color: #282c32;
 
-      .link:hover{
+      .link:hover {
         color: #70ced4;
       }
 
