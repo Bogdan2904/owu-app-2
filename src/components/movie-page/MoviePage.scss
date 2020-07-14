@@ -11,7 +11,7 @@
   min-height: 100vh;
   padding: 50px;
 
-  .dark {
+  &-dark {
     background-color: #282c32;
   }
 
@@ -49,6 +49,7 @@
 
       &-genres {
         font-family: 'Josefin Slab', serif;
+
         span {
           margin-right: 5px;
         }
@@ -56,6 +57,11 @@
 
       &-popularity {
         font-family: 'Josefin Slab', serif;
+
+        &-votes {
+          display: flex;
+          justify-content: space-between;
+        }
       }
 
       &-release-date {

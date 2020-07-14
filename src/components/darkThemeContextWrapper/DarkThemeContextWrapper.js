@@ -1,29 +1,23 @@
-import React, {Component} from 'react';
+import React, {useState} from 'react';
 import {DarkThemeContext, isDarkTheme} from "../../context/DarkThemeContext";
 
-export class DarkThemeContextWrapper extends Component {
-    state={
-        isDarkThemeOn: isDarkTheme
+export function DarkThemeContextWrapper(props) {
+
+    let [isDarkThemeOn, setIsDarkThemeOn] = useState(isDarkTheme)
+
+    const toggleTheme = () => {
+        setIsDarkThemeOn(isDarkThemeOn = !isDarkThemeOn)
     };
 
-    toggleTheme=()=>{
-        debugger
-        this.setState({
-            isDarkThemeOn: !this.state.isDarkThemeOn
-        })
-    };
-
-    render() {
-        const {children} = this.props;
-        return (
-            <DarkThemeContext.Provider value={{
-                isDarkTheme: this.state.isDarkThemeOn,
-                toggleTheme: this.toggleTheme
-            }}>
-                {children}
-            </DarkThemeContext.Provider>
-        );
-    }
+    const {children} = props;
+    return (
+        <DarkThemeContext.Provider value={{
+            isDarkTheme: isDarkThemeOn,
+            toggleTheme
+        }}>
+            {children}
+        </DarkThemeContext.Provider>
+    );
 }
 
 export default DarkThemeContextWrapper;

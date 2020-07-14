@@ -1,7 +1,32 @@
-.may-search-page{
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+.may-search-page {
+  &-dark {
+    background-color: #282c32;
+  }
 
-  min-height: 900px;
+  &-movies {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    min-height: 900px;
+  }
+
+  &-pagination {
+    &-navigation {
+      margin: auto;
+      display: flex;
+      justify-content: space-around;
+      width: 30%;
+
+      .link {
+        color: black;
+        text-decoration: none;
+        outline: none;
+
+        &-dark {
+          color: white;
+        }
+      }
+    }
+  }
 }

@@ -1,87 +1,80 @@
-import React, {Component} from 'react';
-import {connect} from "react-redux";
-import MovieCard from "../movie-card/MovieCard";
-import {getCategoriesMovies} from "../../redux/actions/movies-action";
-import {DarkThemeContext} from "../../context/DarkThemeContext";
+import React, {useContext, useEffect} from 'react'
 import {withRouter} from 'react-router'
 import {NavLink} from "react-router-dom";
+import {connect} from "react-redux";
+import {getCategoriesMovies} from "../../redux/actions/movies-action";
 
+import MovieCard from "../movie-card/MovieCard";
+import {DarkThemeContext} from "../../context/DarkThemeContext";
+import {faArrowRight, faArrowLeft} from '@fortawesome/free-solid-svg-icons'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 
 import './HomePage.scss'
 
-// Array.prototype.showBuMovieCard () = {
-//     this.map(elem => {
-//         return <MovieCard key={elem.id} movie={elem}/>
-//     })
-// };
-class HomePage extends Component {
+function HomePage(props) {
 
+    const value = useContext(DarkThemeContext)
+    const {isDarkTheme} = value;
 
-    static contextType = DarkThemeContext;
+    const {getCategoriesMovies, allPages, allMovies, match: {params: {category, page}}} = props;
 
+    useEffect(() => {
+        loadingMovies()
+    }, [category, page])
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        if (prevProps.routerProps.match.params.category !== this.props.routerProps.match.params.category) {
-            this.loadingMovies();
-        }
+    useEffect(() => {
+        loadingMovies()
+    }, [])
 
-
-        if (prevProps.routerProps.match.params.page !== this.props.routerProps.match.params.page) {
-            this.loadingMovies();
-        }
-
-    }
-
-    componentDidMount() {
-        this.loadingMovies();
-    }
-
-    loadingMovies = () => {
-        const {getCategoriesMovies, routerProps: {match: {params: {category, page}}}} = this.props;
+    const loadingMovies = () => {
         getCategoriesMovies && getCategoriesMovies(category, page);
     };
 
-
-    render() {
-        const {allMovies, routerProps: {match: {params: {category, page}}}} = this.props;
-
-        const {isDarkTheme} = this.context;
-
-        return (
-            <div className={`may-home ${isDarkTheme && "dark"}`}>
-                <div className={`may-home-page `}>
-                    {
-                        !!allMovies && allMovies.map(movie => {
-                            return <MovieCard key={movie.id} movie={movie}/>
-                        })
-                    }
-                    {!!allMovies && <div className='may-home-page-navigation'>
-                        {
-                            page > 1 &&
-                            <NavLink className={`link ${isDarkTheme && "link-dark"}`} to={`/movies-category=${category}/${parseInt(page) - 1}`}>To passed
-                                page
-                            </NavLink>
-                        }
-                        <NavLink className={`link ${isDarkTheme && "link-dark"}`} to={`/movies-category=${category}/1`}>To first page
-                        </NavLink>
-
-                        <NavLink className={`link ${isDarkTheme && "link-dark"}`} to={`/movies-category=${category}/${parseInt(page) + 1}`}>Next page
-                        </NavLink>
-                    </div>}
-                </div>
+    return (
+        <div className={`may-home-page ${isDarkTheme && "may-home-page-dark"}`}>
+            <div className='may-home-page-movies'>
+                {
+                    !!allMovies && allMovies.map(movie => {
+                        return <MovieCard key={movie.id} movie={movie}/>
+                    })
+                }
             </div>
-        );
-    }
+            <div className='may-home-page-pagination'>
+                {allPages>0 && <div className='may-home-page-pagination-navigation'>
+                    {
+                        page > 1 &&
+                        <NavLink className={`link ${isDarkTheme && "link-dark"}`}
+                                 to={`/movies-category=${category}/${parseInt(page) - 1}`}>
+                            <FontAwesomeIcon icon={faArrowLeft}/>
+                        </NavLink>
+                    }
+                    {
+                        page > 1 &&
+                        <NavLink className={`link ${isDarkTheme && "link-dark"}`}
+                                 to={`/movies-category=${category}/1`}>To
+                            first page
+                        </NavLink>
+                    }
+
+                    {
+                        page < allPages &&
+                        <NavLink className={`link ${isDarkTheme && "link-dark"}`}
+                                 to={`/movies-category=${category}/${parseInt(page) + 1}`}>
+                            <FontAwesomeIcon icon={faArrowRight}/>
+                        </NavLink>
+                    }
+
+                </div>}
+            </div>
+        </div>
+    );
 }
 
-
 const mapStateToProps = (store) => {
-    const {genresReducer: {myGenres}, moviesReducer: {myMovies}} = store;
-    console.log('myMovies', myMovies);
+    const {moviesReducer: {myMovies:{results, total_pages}}} = store;
     return {
-        allMovies: myMovies.results,
-        allGenres: myGenres
-
+        allMovies: results,
+        allPages: total_pages
     }
 };
 

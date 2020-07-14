@@ -1,17 +1,16 @@
-.card{
+.card {
   width: 20%;
   margin: 20px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
+  &-dark-theme {
+    box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2), 0 6px 20px 0 rgba(255, 255, 255, 0.19);
+    background-color: #282c32;
+    color: white;
+  }
+
 }
 
-.sss{
-  box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2), 0 6px 20px 0 rgba(255, 255, 255, 0.19);
-  background-color: #282c32;
-  color: white;
-}
-
-
-.card:hover{
+.card:hover {
   transform: scale(1.025);
 }

@@ -1,25 +1,33 @@
 @media screen and (max-width: 425px) {
-  .similar-card{
-    &-image{
-      img{
+  .similar-card {
+    &-image {
+      img {
         width: 100px;
       }
     }
-    &-info{
+
+    &-info {
       font-size: 6px;
     }
   }
 }
 
-@media screen and (max-width: 570px){
-  .similar-card{
-    &-image{
-      img{
+@media screen and (max-width: 570px) {
+  .similar-card {
+    &-image {
+      img {
         width: 200px;
       }
     }
-    &-info{
-      //font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 1180px) {
+  .similar-card {
+    &-image {
+      img {
+        width: 250px;
+      }
     }
   }
 }

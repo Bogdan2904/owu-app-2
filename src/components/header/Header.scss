@@ -1,8 +1,7 @@
 @import "node_modules/font-awesome/scss/font-awesome.scss";
 
-.may-header {
-
-
+//DESKTOP HEADER
+.may-desktop-header {
   &-close {
     height: 70px;
     background: #032541;
@@ -15,16 +14,12 @@
       background-color: #e8ebe9;
     }
 
-
-
     &-logo {
       width: 20%;
       display: flex;
       justify-content: center;
       align-items: center;
       font-size: 45px;
-
-
 
       &-white {
         color: white;
@@ -60,8 +55,6 @@
         width: 20%;
 
       }
-
-
     }
 
     &-user {
@@ -79,7 +72,6 @@
 
       }
     }
-
   }
 
   &-open {
@@ -87,7 +79,6 @@
     justify-content: space-between;
     padding: 20px 140px;
     width: 100%;
-
 
     .link {
       color: #15a2ab;
@@ -100,11 +91,9 @@
       color: #09595e;
     }
 
-
     span:hover {
       transform: scale(1.03);
     }
-
 
     &-dark-theme {
       background-color: #282c32;
@@ -112,9 +101,209 @@
       .link:hover {
         color: #70ced4;
       }
-
     }
-
   }
 }
 
+
+//TABLET HEADER
+.may-tablet-header {
+
+  height: 70px;
+  background: #032541;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+
+  &-burger {
+    font-size: 33px;
+    color: #d3531a;
+  }
+
+  &-sidenav {
+    &-dark {
+      background-color: #565454;
+    }
+
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: white;
+    overflow-x: hidden;
+    transition: 0.5s;
+
+    &-closebtn {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 5px;
+      margin-right: 8px;
+      font-size: 25px;
+
+      &-dark {
+        color: white;
+      }
+    }
+
+    &-logo {
+      display: flex;
+      justify-content: center;
+      margin-top: 36px;
+      font-size: 90px;
+      color: darkblue;
+
+      &-dark {
+        color: #21262a;
+      }
+    }
+
+    &-menu {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-top: 30px;
+      margin-left: 30%;
+      font-weight: 400;
+
+
+      span {
+        font-size: 20px;
+        margin-top: 20px;
+
+        .link {
+          color: black;
+          text-decoration: none;
+
+          &-dark {
+            color: white;
+          }
+        }
+
+        .link:hover {
+          font-weight: bold;
+        }
+      }
+
+    }
+  }
+
+  &-dark {
+    background-color: #e8ebe9;
+  }
+
+  &-form {
+    display: flex;
+    justify-content: space-between;
+    width: 40%;
+
+    .input {
+      width: 80%;
+      outline: none;
+    }
+  }
+}
+
+
+//MOBILE HEADER
+.may-mobile-header {
+  height: 50px;
+  background: #032541;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0 40px;
+
+  &-dark {
+    background-color: #e8ebe9;
+  }
+
+  &-burger {
+    font-size: 33px;
+    color: #d3531a;
+  }
+
+  &-sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: white;
+    overflow-x: hidden;
+    transition: 0.5s;
+
+    &-dark {
+      background-color: #565454;
+    }
+
+    &-closebtn {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 5px;
+      margin-right: 8px;
+      font-size: 25px;
+
+      &-dark {
+        color: white;
+      }
+    }
+
+    &-logo {
+      display: flex;
+      justify-content: center;
+      margin-top: 36px;
+      font-size: 90px;
+      color: darkblue;
+
+      &-dark {
+        color: #21262a;
+      }
+    }
+
+    &-menu {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-top: 30px;
+      margin-left: 30%;
+      font-weight: 400;
+
+
+      span {
+        font-size: 20px;
+        margin-top: 20px;
+
+        .link {
+          color: black;
+          text-decoration: none;
+
+          &-dark {
+            color: white;
+          }
+        }
+
+        .link:hover {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  &-form {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    .input {
+      margin: 20px 0 10px 0;
+    }
+  }
+}

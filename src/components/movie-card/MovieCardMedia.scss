@@ -1,0 +1,29 @@
+@media screen and (max-width: 887px) {
+  .card {
+    width: 28%;
+  }
+
+  .card-title {
+    font-size: 20px;
+
+  }
+
+  .btn {
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .card {
+    width: 24%;
+  }
+
+  .card-title {
+    font-size: 15px;
+
+  }
+
+  .btn {
+    font-size: 10px;
+  }
+}
